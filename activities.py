@@ -1,6 +1,7 @@
 from tkinter import Tk, Label, Entry, Button, Frame, messagebox, W, StringVar
 from authorization import Authorization
 from database import Database
+from abc import abstractmethod
 
 db = Database("db.sqlite")
 auth = Authorization(db)
@@ -15,9 +16,11 @@ class BaseActivity:
         self.frame.pack()
         self._on_start()
 
+    @abstractmethod
     def _on_start(self):
         print("Виджеты не добавлены!")
 
+    @abstractmethod
     def _on_activity_change(self):
         pass
 
